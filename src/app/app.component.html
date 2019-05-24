@@ -1,0 +1,8 @@
+<!-- <app-result-table></app-result-table>
+<app-details-page></app-details-page> -->
+<main class= "container-fluid">
+  <app-form></app-form>
+  <div [@animRoutes]="animationState">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</main>

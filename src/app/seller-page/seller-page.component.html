@@ -1,0 +1,66 @@
+<table class="table-striped table-dark col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+  <tr class="text-center" >
+    <td [attr.colspan]="2">
+    <b>{{sellerInfo.FirstRowSeller}}</b>
+    </td>
+  </tr>
+  <tr>
+    <td>Feedback Score</td>
+    <td>{{ sellerInfo.FeedbackScore }}</td>
+  </tr>
+  <tr>
+    <td>Popularity</td>
+    <td>
+      <div class="positionRelative">
+
+        <round-progress
+          [current]="sellerInfo.Popularity"
+          [max]="100"
+          [radius]="15"
+          [stroke]="2"
+          [color]="'green'"
+          [duration]="1"
+        ></round-progress>
+        <div class="percentageValue">{{ sellerInfo.Popularity }}</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Feedback Rating Star</td>
+    <td>
+      <i
+        class="material-icons"
+        [style.color]="sellerInfo.FeedbackRatingStar[0]"
+        >{{sellerInfo.FeedbackRatingStar[1]}}</i
+      >
+    </td>
+  </tr>
+  <tr>
+    <td>Top Rated</td>
+    <td>
+      <a
+        class="material-icons"
+        [style.color]="'green'"
+        *ngIf="sellerInfo.TopRatedSeller === true"
+        >done</a
+      >
+      <a
+        class="material-icons"
+        [style.color]="'red'"
+        *ngIf="sellerInfo.TopRatedSeller === false"
+        >clear</a
+      >
+    </td>
+  </tr>
+  <tr>
+    <td>Store Name</td>
+    <td>{{sellerInfo.StoreName}}</td>
+  </tr>
+  <tr>
+    <td>Buy Product At</td>
+    <td>
+    <a [href]="sellerInfo.URL" target="_blank" *ngIf="sellerInfo.URL !== 'N/A'">Store</a>
+    <a *ngIf="sellerInfo.URL === 'N/A'">N/A</a>
+  </td>
+  </tr>
+</table>

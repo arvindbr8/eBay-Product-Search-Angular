@@ -1,0 +1,14 @@
+table{
+  margin: 4px auto;
+  width: 100%;
+}
+
+tr td{
+  padding: 7px 10px;
+}
+
+img {
+  padding: 10px;
+  border: 10px solid black;
+}
+

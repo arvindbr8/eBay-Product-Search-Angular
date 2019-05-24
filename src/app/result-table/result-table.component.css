@@ -1,0 +1,23 @@
+thead th {
+  font-size: 1em;
+  padding: 0.6em 0!important;
+  height: 15px;
+}
+
+table{
+  overflow-x: auto;
+  width: 1000px !important;
+  margin: 2px auto;
+}
+
+
+.image-thumbnail{
+  height: 95px;
+  width: 95px;
+  background-size: contain;
+}
+.results-pagination-controls /deep/ .ngx-pagination .current {
+  background-color:black;
+  color: white;
+  font-family: "Helvetica Neue"
+}

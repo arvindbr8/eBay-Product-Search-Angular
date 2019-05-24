@@ -1,0 +1,22 @@
+.positionRelative {
+  position: relative;
+}
+
+.percentageValue {
+  left: 4px;
+  top:40%;
+  position: absolute;
+  width: 100%;
+  text-align: left;
+  font-size: 7px;
+  font-weight: 600;
+}
+
+table{
+  margin: 4px auto;
+  width: 100%;
+}
+
+tr td{
+  padding: 7px 10px;
+}

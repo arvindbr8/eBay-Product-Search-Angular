@@ -1,0 +1,27 @@
+
+.top-right-icon{
+  max-height: 25px;
+  max-width: 25px;
+  font-size: 20px;
+}
+
+.nav-link{
+  font-size: 18px;
+}
+
+.nav{
+  float: right;
+  padding-bottom: 3px;
+}
+
+.nav-pills .nav-item .nav-link:not(.active) {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+/* active (faded) */
+.nav-pills .nav-item .nav-link {
+  background-color: rgba(0, 0, 0);
+  color: white;
+}
+

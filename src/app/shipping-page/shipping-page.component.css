@@ -1,0 +1,15 @@
+a.a-green {
+  color: green;
+}
+a.a-red {
+  color: red;
+}
+table{
+  margin: 4px auto;
+  width: 100%;
+}
+
+tr td{
+  padding: 7px 10px;
+}
+

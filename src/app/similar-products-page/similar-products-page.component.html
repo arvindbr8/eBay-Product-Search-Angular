@@ -1,0 +1,75 @@
+<div id="review-div" class="col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+  <div class="row review-buttons" style= 'margin:0px;'>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="choose-category"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >{{ categoryDisplayNames[selectedCategory] }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="choose-category">
+        <a
+          *ngFor="let type of categoryDisplayNames; index as i"
+          (click)="setCategory(i)"
+          class="dropdown-item"
+          >{{ type }}
+        </a>
+      </div>
+    </div>
+    <div class="dropdown" >
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        [class.disabled]="categoryDisplayNames[selectedCategory] === 'Default'"
+        type="button"
+        id="choose-order"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {{ orderTypes[selectedOrder] }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="choose-order">
+        <a
+          *ngFor="let type of orderTypes; index as i"
+          (click)="setOrderType(i)"
+          class="dropdown-item"
+          >{{ type }}</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="noRecord">
+    No record!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    Something goes wrong!
+  </div>
+  <div>
+    <div *ngFor="let item of similarItems; let ndx = index">
+    <div  class="card text-white bg-dark mb-2" *ngIf="ndx < limit">
+      <div class="media" >
+        <div class="avatar mr-3">
+          <a [href]="">
+            <img [src]="item.ImageURL || 'n/a'" class="image-thumbnail" alt="Image not available" />
+          </a>
+        </div>
+        <div class="media-body">
+          <a [href]="" class="m-0">{{ item.ProductName }}</a>
+          <p class="m-0">Price: ${{ item.Price }}</p>
+          <p class="m-0">Shipping Cost: ${{ item.ShippingCost }}</p>
+          <p class="m-0">Days Left: {{ item.DaysLeft }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<button class="mat-button" (click)="limit = 20" *ngIf="limit === 5 && similarItems?.length > 5">
+  Show More
+</button>
+<button class="mat-button" (click)="limit = 5" *ngIf="limit === 20">
+  Show Less
+</button>

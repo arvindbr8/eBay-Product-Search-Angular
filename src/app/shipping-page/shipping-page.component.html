@@ -1,0 +1,29 @@
+<table class="table-striped table-dark col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+  <tr>
+    <td>Shipping Cost</td>
+    <td>{{ showData.ShippingCost }}</td>
+  </tr>
+  <tr>
+    <td>Shipping Locations</td>
+    <td>{{ showData.ShippingLocations }}</td>
+  </tr>
+  <tr>
+      <td>Handling Time</td>
+      <td>{{ showData.HandlingTime }}</td>
+  </tr>
+  <tr>
+      <td>Expedited Shipping</td>
+      <a class="material-icons a-green" *ngIf="showData.ExpeditedShipping === 'done'">{{showData.ExpeditedShipping}}</a>
+      <a class="material-icons a-red" *ngIf="showData.ExpeditedShipping === 'clear'">{{showData.ExpeditedShipping}}</a>
+  </tr>
+  <tr>
+      <td>One Day Shipping</td>
+      <a class="material-icons a-green" *ngIf="showData.OneDayShipping === 'done'">{{showData.OneDayShipping}}</a>
+      <a class="material-icons a-red" *ngIf="showData.OneDayShipping === 'clear'">{{showData.OneDayShipping}}</a>
+  </tr>
+  <tr>
+      <td>Return Accepted</td>
+      <a class="material-icons a-green" *ngIf="showData.ReturnAccepted === 'done'">{{showData.ReturnAccepted}}</a>
+      <a class="material-icons a-red" *ngIf="showData.ReturnAccepted === 'clear'">{{showData.ReturnAccepted}}</a>
+  </tr>
+</table>

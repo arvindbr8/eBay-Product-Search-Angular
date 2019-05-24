@@ -1,0 +1,69 @@
+<div class="text-center"><b>{{this.productResultsService.productResults.Title}}</b></div>
+<div style = 'position:relative;margin-bottom: 50px;'>
+  <div style = 'margin-left:100px; float : left;'>
+    <button class="btn btn-outline-secondary" [routerLink]="['/'+mainTab]">< List</button>
+  </div>
+  <div style = 'margin-right:100px;float : right;'>
+    <button style = 'border:none; padding: 0px'>
+      <img style = 'width :40px;height:40px;' (click)="share()" src="http://csci571.com/hw/hw8/Images/facebook.png" />
+    </button>
+      <button class="btn btn-outline-secondary" class="material-icons" style=" border:none; padding: 0px; color: gold; width :40px;height:40px;" (click)="remWishList()"
+        *ngIf="inWishList()">remove_shopping_cart</button>
+      <button class="btn btn-outline-secondary" class="material-icons" style = 'border:none; padding: 0px; width :40px;height:40px;' (click)="addWishList()"
+        *ngIf="!inWishList()">add_shopping_cart</button>
+  </div>
+</div>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [ngClass]="{'pr-1': small, 'pl-1': small}"
+      [class.active]="currTab === 'product'"
+      [routerLink]="['/details/'+mainTab+'/product']"
+      >Product</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [ngClass]="{'pr-1': small, 'pl-1': small}"
+      [class.active]="currTab === 'photos'"
+      [routerLink]="['/details/'+mainTab+'/photos']"
+      >Photos</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [ngClass]="{'pr-1': small, 'pl-1': small}"
+      [class.active]="currTab === 'shipping'"
+      [routerLink]="['/details/'+mainTab+'/shipping']"
+      >Shipping</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [ngClass]="{'pr-1': small, 'pl-1': small}"
+      [class.active]="currTab === 'seller'"
+      [routerLink]="['/details/'+mainTab+'/seller']"
+      >Seller</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [ngClass]="{'pr-1': small, 'pl-1': small}"
+      [class.active]="currTab === 'similarProducts'"
+      [routerLink]="['/details/'+mainTab+'/similarProducts']"
+      >{{similarTab}}</a
+    >
+  </li>
+</ul>
+<app-product-page *ngIf="currTab === 'product'"></app-product-page>
+<app-photos-page *ngIf="currTab === 'photos'"></app-photos-page>
+<app-shipping-page *ngIf="currTab === 'shipping'"></app-shipping-page>
+<app-seller-page *ngIf="currTab === 'seller'"></app-seller-page>
+<app-similar-products-page
+  *ngIf="currTab === 'similarProducts'"
+></app-similar-products-page>

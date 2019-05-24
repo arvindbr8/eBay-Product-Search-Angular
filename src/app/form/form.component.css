@@ -1,0 +1,47 @@
+
+.form-button-label{
+  font-size: 10px;
+}
+
+.form-group *{
+  font-size: 14px;
+}
+
+.nav-link{
+  font-size: 18px;
+}
+
+.nav-pills .nav-item .nav-link:not(.active) {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+/* active (faded) */
+.nav-pills .nav-item .nav-link {
+  background-color: rgba(0, 0, 0);
+  color: white;
+}
+
+
+
+.form-check-label{
+  color:white;
+}
+
+.form-title{
+  color: white;
+  margin: 1.2rem;
+  text-align: center;
+}
+
+.material-icons{
+  font-size: 20px;
+}
+
+.spacer{
+  height: 14px;
+}
+
+.col-form-label{
+  color: white;
+}

@@ -1,0 +1,73 @@
+<div class="alert alert-warning" *ngIf="display === 'no-result'">No Records.</div>
+<div *ngIf="display === 'WishList-table'">
+  <div class="text-right">
+    <button class="btn"(click)="fetchDetails(wishListItems.indexOf(currentResult))" [disabled]="selectedItemId === undefined">Details ></button>
+  </div>
+  <div *ngIf="wishListItems?.length > 0">
+    <table class="result-table  table-striped table-dark">
+      <thead>
+        <th>#</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Shipping</th>
+        <th>Seller</th>
+        <th>Wish List</th>
+      </thead>
+      <!-- <tr *ngFor="let result of wishListItems; let ndx = index;"> -->
+      <tr
+        *ngFor="
+          let result of (wishListItems
+            | paginate: { itemsPerPage: 10, currentPage: p });
+          let ndx = index
+        "
+        (click)="setClickedRow(ndx, result)"
+        [class.table-primary]="ndx == selectedRow"
+      >
+        <td>
+          {{ wishListItems.indexOf(result) + 1 }}
+        </td>
+        <td (click)="openImageTab(result.Image)">
+          <img class="image-thumbnail" src="{{ result.Image }}" />
+        </td>
+        <td>
+          <a
+            [routerLink]=""
+            (click)="fetchDetails(wishListItems.indexOf(result))"
+            matTooltip="{{ result.FullTitle }}"
+            placement="top"
+            >{{ result.Title }}</a
+          >
+        </td>
+        <td>
+          ${{ parseFloat(result.Price).toFixed(2) }}
+        </td>
+        <td>
+          {{ result.Shipping }}
+        </td>
+        <td>
+          {{ result.Seller }}
+        </td>
+        <td>
+          <button class="material-icons" (click)='remWishList(wishListItems.indexOf(result))' style="color: gold;" *ngIf='!inWishList(wishListItems.indexOf(result))'>remove_shopping_cart</button>
+          <!-- <button class="material-icons" (click)='addWishList(wishListItems.indexOf(result))' *ngIf='!inWishList(wishListItems.indexOf(result))'>add_shopping_cart</button> -->
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <b>Total Shopping</b>
+        </td>
+        <td>
+          <b>${{totalShopping.toFixed(2)}}</b>
+        </td>
+      </tr>
+    </table>
+
+    <pagination-controls (pageChange)="p = $event; selectedRow = -1; selectedItemId = '';"></pagination-controls>
+  </div>
+</div>

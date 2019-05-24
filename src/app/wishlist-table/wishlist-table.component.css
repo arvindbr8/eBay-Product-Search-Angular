@@ -1,0 +1,10 @@
+table{
+  margin: 4px auto;
+  width: 100%;
+}
+
+.image-thumbnail{
+  height: 95px;
+  width: 95px;
+  background-size: contain;
+}

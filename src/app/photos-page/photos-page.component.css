@@ -1,0 +1,18 @@
+img{
+  border: 5px;
+}
+
+div.card-columns {
+  column-gap: 0px;
+}
+
+div.card{
+  background-color: black;
+
+}
+
+.container {
+  margin-top: -1px;
+  float:right;
+}
+

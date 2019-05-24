@@ -1,0 +1,64 @@
+<div  class="col-lg-10 offset-lg-1 col-md-10 offset-md-1" class="alert alert-warning" *ngIf="display === 'no-result'">No Records found.</div>
+<div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1"*ngIf="display === 'result-table'">
+  <div  class="text-right">
+    <button class="btn" (click)="fetchDetails(results.indexOf(currentResult))" [disabled]="selectedItemId === undefined">Details ></button>
+  </div>
+  <div class="table" *ngIf="results?.length > 0 && noResult == false">
+    <table class="col-lg-10 offset-lg-1 col-md-10 offset-md-1" class="result-table table-striped table-dark">
+      <thead class="">
+        <th>#</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Shipping</th>
+        <th>Zip</th>
+        <th>Seller</th>
+        <th>Wish List</th>
+      </thead>
+      <tr
+        *ngFor="
+          let result of (results
+            | paginate: { itemsPerPage: 10, currentPage: p });
+          let ndx = index
+        "
+        (click)="setClickedRow(ndx, result)"
+        [class.table-primary]="ndx == selectedRow"
+      >
+        <td class="pl-2">
+          {{ results.indexOf(result) + 1 }}
+        </td>
+        <td class="pl-2" (click)="openImageTab(result.Image)">
+          <img class="image-thumbnail" src="{{ result.Image }}" />
+        </td>
+        <td class="pl-2">
+          <a
+            [routerLink]=""
+            (click)="fetchDetails(results.indexOf(result))"
+            matTooltip="{{ result.FullTitle }}"
+            placement="top"
+            >{{ result.Title }}</a
+          >
+        </td>
+        <td class="pl-2">
+          $ {{ parseFloat(result.Price).toFixed(2) }}
+        </td>
+        <td class="pl-2">
+          {{ result.Shipping }}
+        </td>
+        <td class="pl-2">
+          {{ result.Zip }}
+        </td>
+        <td class="pl-2">
+          {{ result.Seller }}
+        </td>
+        <td class="pl-2">
+          <button class="material-icons" style="color: gold" (click)='remWishList(results.indexOf(result))' *ngIf='inWishList(results.indexOf(result))'>remove_shopping_cart</button>
+          <button class="material-icons" (click)='addWishList(results.indexOf(result))' *ngIf='!inWishList(results.indexOf(result))'>add_shopping_cart</button>
+        </td>
+      </tr>
+    </table>
+    <div class="text-center">
+      <pagination-controls class="results-pagination-controls"(pageChange)="p = $event; selectedRow = -1; selectedItemId = undefined;"></pagination-controls>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+
+<div class="container p-1 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+  <div class="card-columns p-1">
+    <div class="card p-1" *ngFor="let url of imageUrl; let ndx = index">
+      <a href="" (click)="openImageTab(url);"><img class="card-img-top" style="size: contain;" src="{{url}}" /></a>
+    </div>
+  </div>
+</div>
